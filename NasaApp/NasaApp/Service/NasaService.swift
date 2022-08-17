@@ -19,6 +19,5 @@ class NasaService {
             guard let response = response.value else { return }
             completion(response.photos)
         }
-        
     }
 }

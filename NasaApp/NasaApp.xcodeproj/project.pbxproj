@@ -22,6 +22,8 @@
 		332F9B1C28ACD2490082F759 /* NasaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B1B28ACD2490082F759 /* NasaService.swift */; };
 		332F9B2028ACF5000082F759 /* NasaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B1F28ACF5000082F759 /* NasaPresenter.swift */; };
 		332F9B2328ACFDE00082F759 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B2228ACFDE00082F759 /* PhotoResponse.swift */; };
+		332F9B2928AD19D60082F759 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B2828AD19D60082F759 /* PhotoCell.swift */; };
+		332F9B2B28AD4DA40082F759 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */; };
 		43664AD78DAF682B9F80479F /* Pods_NasaAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD71B5F690878A08D2EE6E0 /* Pods_NasaAppTests.framework */; };
 		ABA7828CE6165AD5AE984BC6 /* Pods_NasaApp_NasaAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B76DC90C394BEEB97224B0 /* Pods_NasaApp_NasaAppUITests.framework */; };
 		DF321894F43054611E9A121B /* Pods_NasaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF4CB105A4BFE91DDC1E771 /* Pods_NasaApp.framework */; };
@@ -65,6 +67,8 @@
 		332F9B1B28ACD2490082F759 /* NasaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaService.swift; sourceTree = "<group>"; };
 		332F9B1F28ACF5000082F759 /* NasaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaPresenter.swift; sourceTree = "<group>"; };
 		332F9B2228ACFDE00082F759 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		332F9B2828AD19D60082F759 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5FD71B5F690878A08D2EE6E0 /* Pods_NasaAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2DF93C16F7F66DF606A898 /* Pods-NasaAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NasaAppTests/Pods-NasaAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF4CB105A4BFE91DDC1E771 /* Pods_NasaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +190,7 @@
 		332F9B1228ACCEDD0082F759 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				332F9B2728AD19AB0082F759 /* Cells */,
 				332F9ADF28ABDDE70082F759 /* AppDelegate.swift */,
 				332F9AE128ABDDE70082F759 /* SceneDelegate.swift */,
 				332F9AEA28ABDDE80082F759 /* LaunchScreen.storyboard */,
@@ -198,6 +203,7 @@
 		332F9B1428ACD03F0082F759 /* Utils+Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */,
 			);
 			path = "Utils+Extensions";
 			sourceTree = "<group>";
@@ -208,6 +214,14 @@
 				332F9B2228ACFDE00082F759 /* PhotoResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		332F9B2728AD19AB0082F759 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				332F9B2828AD19D60082F759 /* PhotoCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		99CAAD8404ACE1090EE2BAE4 /* Frameworks */ = {
@@ -475,9 +489,11 @@
 				332F9B2328ACFDE00082F759 /* PhotoResponse.swift in Sources */,
 				332F9B1628ACD0810082F759 /* Photo.swift in Sources */,
 				332F9B2028ACF5000082F759 /* NasaPresenter.swift in Sources */,
+				332F9B2B28AD4DA40082F759 /* UIColor+Extension.swift in Sources */,
 				332F9B1828ACD08B0082F759 /* Camera.swift in Sources */,
 				332F9B1A28ACD0940082F759 /* Rover.swift in Sources */,
 				332F9AE428ABDDE70082F759 /* ViewController.swift in Sources */,
+				332F9B2928AD19D60082F759 /* PhotoCell.swift in Sources */,
 				332F9AE028ABDDE70082F759 /* AppDelegate.swift in Sources */,
 				332F9B1C28ACD2490082F759 /* NasaService.swift in Sources */,
 				332F9AE228ABDDE70082F759 /* SceneDelegate.swift in Sources */,
