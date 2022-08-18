@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pyt-BU-MxE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1H6-lE-Wz0">
                                     <size key="itemSize" width="175" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,19 +55,34 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ui7-cg-heW"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A72-jh-8t1">
+                                <rect key="frame" x="25" y="88" width="364" height="32"/>
+                                <segments>
+                                    <segment title="Curiosity"/>
+                                    <segment title="Opportunity"/>
+                                    <segment title="Spirit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="roverChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cfa-RA-rUR"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pyt-BU-MxE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="74a-yr-3pD"/>
-                            <constraint firstItem="pyt-BU-MxE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IuW-gx-3p4"/>
-                            <constraint firstAttribute="bottom" secondItem="pyt-BU-MxE" secondAttribute="bottom" id="gVl-Zw-afn"/>
-                            <constraint firstItem="pyt-BU-MxE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vFa-oK-6yg"/>
+                            <constraint firstItem="pyt-BU-MxE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9PZ-zR-Jq1"/>
+                            <constraint firstItem="pyt-BU-MxE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BYL-Fy-ai4"/>
+                            <constraint firstItem="A72-jh-8t1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DTz-ys-f4O"/>
+                            <constraint firstItem="A72-jh-8t1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Efl-ZZ-mIo"/>
+                            <constraint firstAttribute="bottom" secondItem="pyt-BU-MxE" secondAttribute="bottom" id="Whw-4D-s4g"/>
+                            <constraint firstItem="pyt-BU-MxE" firstAttribute="top" secondItem="A72-jh-8t1" secondAttribute="bottom" constant="20" id="ag5-cv-frz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A72-jh-8t1" secondAttribute="trailing" constant="25" id="cwh-K3-WNt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cn7-g0-dZD"/>
                     <connections>
                         <outlet property="photosCollectionView" destination="pyt-BU-MxE" id="8OT-Qe-OKG"/>
+                        <outlet property="roverSegmentedControl" destination="A72-jh-8t1" id="8hV-um-9Is"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

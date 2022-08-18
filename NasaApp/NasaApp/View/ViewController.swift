@@ -8,9 +8,12 @@
 import UIKit
 import Kingfisher
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
 
     @IBOutlet weak var photosCollectionView: UICollectionView!
+    @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
+    
+    
     let searchController = UISearchController(searchResultsController: nil)
     private let presenter = NasaPresenter()
     private var photos: [Photo]?
@@ -31,11 +34,13 @@ class ViewController: UIViewController{
         configureUI()
         configureSearchController()
         setupNavBar()
+        
         // Presenter
         presenter.setDelegate(delegate: self)
-        presenter.getPhotos()
+        presenter.getPhotos(roverType: .curiosity)
     }
-    
+
+// MARK: - Private Methods
     private func configureUI() {
         view.backgroundColor = .smokeBlack
         
@@ -53,6 +58,9 @@ class ViewController: UIViewController{
         
         photosCollectionView!.collectionViewLayout = design
         
+        // Segmented Control
+        roverSegmentedControl.backgroundColor = .lightGray
+        
     }
     
     private func setupNavBar(){
@@ -68,8 +76,17 @@ class ViewController: UIViewController{
         
         navigationItem.titleView = imageView
     }
+    
+// MARK: - Action
+    @IBAction func roverChanged(_ sender: Any) {
+        searchController.searchBar.text = ""
+        if let value = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
+            presenter.getPhotos(roverType: value)
+        }
+    }
 }
 
+// MARK: - Extension
 extension ViewController: NasaPresenterDelegate {
     func getPhotos(photos: [Photo]?) {
         self.photos = photos
@@ -93,6 +110,7 @@ extension ViewController {
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Search Camera"
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.searchTextField.textColor = .white
     }
 }
 
@@ -105,11 +123,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
+        cell.layer.cornerRadius = 5.0
         
-        cell.photoImageView.kf.indicatorType = .activity
+        cell.photoImageView.kf.indicatorType = .none
         if isSearching {
             cell.photoImageView.kf.setImage(with: URL(string: filteredPhotos?[indexPath.row].imageSource ?? ""),
-                                            placeholder: UIImage(named: "NasaLogo"),
                                             options: [
                                                 .scaleFactor(UIScreen.main.scale),
                                                 .transition(.fade(1)),
