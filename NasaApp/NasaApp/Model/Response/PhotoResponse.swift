@@ -8,5 +8,5 @@
 import Foundation
 
 struct PhotoResponse: Codable {
-    let photos : [Photo]?
+    let photos : [Photo]
 }

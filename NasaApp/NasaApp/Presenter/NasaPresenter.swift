@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NasaPresenterDelegate: AnyObject {
-    func getPhotos(photos: [Photo]?)
+    func getPhotos(photos: [Photo])
 }
 
 typealias PresenterDelegate = NasaPresenterDelegate
@@ -18,9 +18,10 @@ class NasaPresenter {
     // weak bcs prevent strong reference
     weak var delegate: PresenterDelegate?
     var nasaService = NasaService()
+    var page = 1
 
-    func getPhotos(roverType: RoverType) {
-        nasaService.getPhotos(roverType: roverType, completion: { result in
+    func getPhotos(roverType: RoverType, page: Int = 1) {
+        nasaService.getPhotos(roverType: roverType, page: page, completion: { result in
             self.delegate?.getPhotos(photos: result)
         })
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import NVActivityIndicatorView
 
 class ViewController: UIViewController {
     
@@ -15,9 +16,10 @@ class ViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     private let presenter = NasaPresenter()
-    private var photos: [Photo]?
-    private var filteredPhotos: [Photo]?
+    private var photos: [Photo] = []
+    private var filteredPhotos: [Photo] = []
     private var isSearching: Bool = false
+    private let indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: .white, padding: 0)
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -36,6 +38,8 @@ class ViewController: UIViewController {
         
         // Presenter
         presenter.setDelegate(delegate: self)
+       
+        indicator.startAnimating()
         presenter.getPhotos(roverType: .curiosity)
     }
 
@@ -53,6 +57,10 @@ class ViewController: UIViewController {
         
         // Segmented Control
         roverSegmentedControl.backgroundColor = .lightGray
+        
+        // LoadingIndicator
+        view.addSubview(indicator)
+        indicator.center = self.view.center
     }
     
     private func setupNavBar(){
@@ -73,6 +81,8 @@ class ViewController: UIViewController {
     @IBAction func roverChanged(_ sender: Any) {
         searchController.searchBar.text = ""
         if let value = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
+            photos.removeAll()
+            indicator.startAnimating()
             presenter.getPhotos(roverType: value)
         }
     }
@@ -80,10 +90,13 @@ class ViewController: UIViewController {
 
 // MARK: - Extension
 extension ViewController: NasaPresenterDelegate {
-    func getPhotos(photos: [Photo]?) {
-        self.photos = photos
+    func getPhotos(photos: [Photo]) {
+        self.photos.append(contentsOf: photos)
         
-        DispatchQueue.main.async {
+        indicator.stopAnimating()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.presenter.page += 1
             self.photosCollectionView.reloadData()
         }
     }
@@ -109,7 +122,7 @@ extension ViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isSearching ? filteredPhotos?.count ?? 0 : photos?.count ?? 0
+        return isSearching ? filteredPhotos.count : photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,14 +131,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.photoImageView.contentMode = .scaleAspectFill
         
         if isSearching {
-            cell.photoImageView.kf.setImage(with: URL(string: filteredPhotos?[indexPath.row].imageSource ?? ""),
+            cell.photoImageView.kf.setImage(with: URL(string: filteredPhotos[indexPath.row].imageSource ?? ""),
                                             options: [
                                                 .scaleFactor(UIScreen.main.scale),
                                                 .transition(.fade(1)),
                                                 .cacheOriginalImage
                                             ])
         } else {
-            cell.photoImageView.kf.setImage(with: URL(string: photos?[indexPath.row].imageSource ?? ""),
+            cell.photoImageView.kf.setImage(with: URL(string: photos[indexPath.row].imageSource ?? ""),
                                             options: [
                                                 .scaleFactor(UIScreen.main.scale),
                                                 .transition(.fade(1)),
@@ -135,20 +148,33 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return cell
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offSetY = scrollView.contentOffset.y
+        let height = scrollView.contentSize.height
+        
+        
+        
+        if offSetY > height - scrollView.frame.size.height {
+            if let value = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
+                presenter.getPhotos(roverType: value, page: presenter.page)
+            }
+        }
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text!
         if !searchText.isEmpty {
             isSearching = true
-            filteredPhotos?.removeAll()
-            for photo in photos ?? [] {
+            filteredPhotos.removeAll()
+            for photo in photos {
                 if (photo.camera?.fullName?.lowercased().contains(searchText.lowercased()) == true) {
-                    filteredPhotos?.append(photo)
+                    filteredPhotos.append(photo)
                 }
             }
             
         } else {
             isSearching = false
-            filteredPhotos?.removeAll()
+            filteredPhotos.removeAll()
             filteredPhotos = photos
         }
         photosCollectionView.reloadData()
@@ -156,7 +182,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
-        filteredPhotos?.removeAll()
+        filteredPhotos.removeAll()
         photosCollectionView.reloadData()
     }
 }

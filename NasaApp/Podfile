@@ -9,6 +9,7 @@ target 'NasaApp' do
 	pod 'Alamofire'
 	pod 'Kingfisher', '~> 7.0'
 	pod 'SkeletonView'
+	pod 'NVActivityIndicatorView'
 
   target 'NasaAppTests' do
     inherit! :search_paths
