@@ -8,6 +8,7 @@ target 'NasaApp' do
   # Pods for NasaApp
 	pod 'Alamofire'
 	pod 'Kingfisher', '~> 7.0'
+	pod 'SkeletonView'
 
   target 'NasaAppTests' do
     inherit! :search_paths

@@ -9,10 +9,9 @@ import UIKit
 import Kingfisher
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
-    
     
     let searchController = UISearchController(searchResultsController: nil)
     private let presenter = NasaPresenter()
@@ -45,22 +44,15 @@ class ViewController: UIViewController {
         view.backgroundColor = .smokeBlack
         
         // Design CollectionView cells
-        let design:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let width = self.photosCollectionView.frame.size.width    // for iPhone 13 it's 414
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 2
+        layout.minimumInteritemSpacing = 2
         
-        design.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
-        design.minimumLineSpacing = 5
-        design.minimumInteritemSpacing = 5
-        
-        let cellWidth = (width-40) / 2
-        
-        design.itemSize = CGSize(width: cellWidth, height: cellWidth)
-        
-        photosCollectionView!.collectionViewLayout = design
+        layout.itemSize = CGSize(width: (view.frame.size.width / 2) - 2, height: (view.frame.size.width / 2) - 2)
+        photosCollectionView!.collectionViewLayout = layout
         
         // Segmented Control
         roverSegmentedControl.backgroundColor = .lightGray
-        
     }
     
     private func setupNavBar(){
@@ -117,15 +109,14 @@ extension ViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return isSearching ? filteredPhotos?.count ?? 0 : photos?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
+        let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as! PhotoCell
         cell.layer.cornerRadius = 5.0
+        cell.photoImageView.contentMode = .scaleAspectFill
         
-        cell.photoImageView.kf.indicatorType = .none
         if isSearching {
             cell.photoImageView.kf.setImage(with: URL(string: filteredPhotos?[indexPath.row].imageSource ?? ""),
                                             options: [

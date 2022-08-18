@@ -9,5 +9,7 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
+    static let identifier = "photoCell"
+    
     @IBOutlet weak var photoImageView: UIImageView!
 }
