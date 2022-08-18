@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var noPhotoView: UIView!
     
     let searchController = UISearchController(searchResultsController: nil)
     private let presenter = NasaPresenter()
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
 // MARK: - Private Methods
     private func configureUI() {
         view.backgroundColor = .smokeBlack
+        noPhotoView.isHidden = true
         
         // Design CollectionView cells
         let layout = UICollectionViewFlowLayout()
@@ -77,13 +79,19 @@ class ViewController: UIViewController {
         navigationItem.titleView = imageView
     }
     
+    private func userInteraction(_ set: Bool) {
+        searchController.searchBar.isUserInteractionEnabled = set
+        view.isUserInteractionEnabled = set
+    }
+    
 // MARK: - Action
     @IBAction func roverChanged(_ sender: Any) {
         searchController.searchBar.text = ""
-        if let value = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
+        if let roverType = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
             photos.removeAll()
             indicator.startAnimating()
-            presenter.getPhotos(roverType: value)
+            userInteraction(false)
+            presenter.getPhotos(roverType: roverType)
         }
     }
 }
@@ -94,6 +102,7 @@ extension ViewController: NasaPresenterDelegate {
         self.photos.append(contentsOf: photos)
         
         indicator.stopAnimating()
+        userInteraction(true)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.presenter.page += 1
@@ -152,10 +161,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let offSetY = scrollView.contentOffset.y
         let height = scrollView.contentSize.height
         
-        
-        
         if offSetY > height - scrollView.frame.size.height {
             if let value = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
+                indicator.startAnimating()
                 presenter.getPhotos(roverType: value, page: presenter.page)
             }
         }
@@ -171,13 +179,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
                     filteredPhotos.append(photo)
                 }
             }
-            
         } else {
             isSearching = false
             filteredPhotos.removeAll()
             filteredPhotos = photos
         }
         photosCollectionView.reloadData()
+        noPhotoView.isHidden = !filteredPhotos.isEmpty
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

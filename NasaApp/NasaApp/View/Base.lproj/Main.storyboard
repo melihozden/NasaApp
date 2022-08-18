@@ -17,6 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A72-jh-8t1">
+                                <rect key="frame" x="25" y="88" width="364" height="32"/>
+                                <segments>
+                                    <segment title="Curiosity"/>
+                                    <segment title="Opportunity"/>
+                                    <segment title="Spirit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="roverChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cfa-RA-rUR"/>
+                                </connections>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pyt-BU-MxE">
                                 <rect key="frame" x="0.0" y="129" width="414" height="767"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1H6-lE-Wz0">
@@ -65,32 +76,66 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ui7-cg-heW"/>
                                 </connections>
                             </collectionView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A72-jh-8t1">
-                                <rect key="frame" x="25" y="88" width="364" height="32"/>
-                                <segments>
-                                    <segment title="Curiosity"/>
-                                    <segment title="Opportunity"/>
-                                    <segment title="Spirit"/>
-                                </segments>
-                                <connections>
-                                    <action selector="roverChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cfa-RA-rUR"/>
-                                </connections>
-                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASM-LD-3Gk">
+                                <rect key="frame" x="0.0" y="129" width="414" height="767"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq4-7W-rth">
+                                        <rect key="frame" x="131" y="25" width="150" height="125"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wDW-dU-xyJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="125"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="NoDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="uhy-eb-fSU">
+                                                        <rect key="frame" x="43" y="0.0" width="64" height="61"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="61" id="LIr-ln-H6U"/>
+                                                            <constraint firstAttribute="width" constant="64" id="qZy-1y-dhn"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No photo found!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYb-A2-wHI">
+                                                        <rect key="frame" x="9.5" y="69" width="131.5" height="56"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="GaM-2X-ifm"/>
+                                            <constraint firstAttribute="trailing" secondItem="wDW-dU-xyJ" secondAttribute="trailing" id="IgO-rB-K2R"/>
+                                            <constraint firstAttribute="width" constant="150" id="fli-py-ynS"/>
+                                            <constraint firstItem="wDW-dU-xyJ" firstAttribute="top" secondItem="Lq4-7W-rth" secondAttribute="top" id="hAa-Ab-144"/>
+                                            <constraint firstAttribute="bottom" secondItem="wDW-dU-xyJ" secondAttribute="bottom" id="jLX-9K-ev4"/>
+                                            <constraint firstItem="wDW-dU-xyJ" firstAttribute="leading" secondItem="Lq4-7W-rth" secondAttribute="leading" id="wfW-BL-Dh1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lq4-7W-rth" firstAttribute="centerX" secondItem="ASM-LD-3Gk" secondAttribute="centerX" constant="-1" id="WvS-9o-v96"/>
+                                    <constraint firstItem="Lq4-7W-rth" firstAttribute="top" secondItem="ASM-LD-3Gk" secondAttribute="top" constant="25" id="qC8-ej-1Ms"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ASM-LD-3Gk" firstAttribute="leading" secondItem="pyt-BU-MxE" secondAttribute="leading" id="0uN-nD-4Ri"/>
                             <constraint firstItem="pyt-BU-MxE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9PZ-zR-Jq1"/>
                             <constraint firstItem="pyt-BU-MxE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BYL-Fy-ai4"/>
+                            <constraint firstItem="ASM-LD-3Gk" firstAttribute="bottom" secondItem="pyt-BU-MxE" secondAttribute="bottom" id="DLg-ko-ebY"/>
                             <constraint firstItem="A72-jh-8t1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DTz-ys-f4O"/>
                             <constraint firstItem="A72-jh-8t1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Efl-ZZ-mIo"/>
+                            <constraint firstItem="ASM-LD-3Gk" firstAttribute="top" secondItem="pyt-BU-MxE" secondAttribute="top" id="SDz-bj-1Cn"/>
                             <constraint firstAttribute="bottom" secondItem="pyt-BU-MxE" secondAttribute="bottom" id="Whw-4D-s4g"/>
                             <constraint firstItem="pyt-BU-MxE" firstAttribute="top" secondItem="A72-jh-8t1" secondAttribute="bottom" constant="10" id="ag5-cv-frz"/>
+                            <constraint firstItem="ASM-LD-3Gk" firstAttribute="trailing" secondItem="pyt-BU-MxE" secondAttribute="trailing" id="bh2-kG-wWt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A72-jh-8t1" secondAttribute="trailing" constant="25" id="cwh-K3-WNt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cn7-g0-dZD"/>
                     <connections>
+                        <outlet property="noPhotoView" destination="ASM-LD-3Gk" id="E3k-y0-xiO"/>
                         <outlet property="photosCollectionView" destination="pyt-BU-MxE" id="8OT-Qe-OKG"/>
                         <outlet property="roverSegmentedControl" destination="A72-jh-8t1" id="8hV-um-9Is"/>
                     </connections>
@@ -119,6 +164,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NoDataFound" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
