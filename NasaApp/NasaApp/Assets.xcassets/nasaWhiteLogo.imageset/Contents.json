@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "planet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "nasaWhiteLogo.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
