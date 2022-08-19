@@ -19,6 +19,7 @@ class NasaPresenter {
     weak var delegate: PresenterDelegate?
     var nasaService = NasaService()
     var page = 1
+    var selectedPhoto: Photo?
 
     func getPhotos(roverType: RoverType, page: Int = 1) {
         nasaService.getPhotos(roverType: roverType, page: page, completion: { result in

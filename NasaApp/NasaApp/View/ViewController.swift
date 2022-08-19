@@ -39,8 +39,9 @@ class ViewController: UIViewController {
         
         // Presenter
         presenter.setDelegate(delegate: self)
-       
+        // Indicator
         indicator.startAnimating()
+        // Service Call
         presenter.getPhotos(roverType: .curiosity)
     }
 
@@ -72,7 +73,7 @@ class ViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
         imageView.contentMode = .scaleAspectFit
         
-        let image = UIImage(named: "NasaLogo")
+        let image = UIImage(named: "NasaWhiteLogo")
         imageView.layer.cornerRadius = 5.0
         imageView.image = image
         
@@ -155,6 +156,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
                                             ])
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.selectedPhoto = filteredPhotos[indexPath.row]
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

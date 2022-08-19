@@ -10,10 +10,6 @@ import UIKit
 
 extension UIColor {
     public class var smokeBlack: UIColor{
-        return UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)  //0F0E0E
-    }
-    
-    public class var skeletonColor: UIColor{
-        return UIColor(red: 42/255, green: 40/255, blue: 40/255, alpha: 1.0)  //0F0E0E
+        return UIColor(red: 2/255, green: 2/255, blue: 2/255, alpha: 1.0)  //020202
     }
 }
