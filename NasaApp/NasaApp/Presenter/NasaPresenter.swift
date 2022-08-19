@@ -21,12 +21,14 @@ class NasaPresenter {
     var page = 1
     var selectedPhoto: Photo?
 
+    // MARK: - ServiceCalls
     func getPhotos(roverType: RoverType, page: Int = 1) {
         nasaService.getPhotos(roverType: roverType, page: page, completion: { result in
             self.delegate?.getPhotos(photos: result)
         })
     }
     
+    // MARK: - Public Methods
     public func setDelegate(delegate: PresenterDelegate) {
         self.delegate = delegate
     }

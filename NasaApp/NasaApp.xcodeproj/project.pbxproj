@@ -26,6 +26,7 @@
 		332F9B2B28AD4DA40082F759 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */; };
 		3338746328AE1326009CB4D9 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338746228AE1326009CB4D9 /* RoverType.swift */; };
 		3338746528AFA039009CB4D9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338746428AFA038009CB4D9 /* DetailViewController.swift */; };
+		3338746728AFB510009CB4D9 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338746628AFB510009CB4D9 /* DetailPresenter.swift */; };
 		43664AD78DAF682B9F80479F /* Pods_NasaAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD71B5F690878A08D2EE6E0 /* Pods_NasaAppTests.framework */; };
 		ABA7828CE6165AD5AE984BC6 /* Pods_NasaApp_NasaAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B76DC90C394BEEB97224B0 /* Pods_NasaApp_NasaAppUITests.framework */; };
 		DF321894F43054611E9A121B /* Pods_NasaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF4CB105A4BFE91DDC1E771 /* Pods_NasaApp.framework */; };
@@ -73,6 +74,7 @@
 		332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3338746228AE1326009CB4D9 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
 		3338746428AFA038009CB4D9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3338746628AFB510009CB4D9 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		5FD71B5F690878A08D2EE6E0 /* Pods_NasaAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2DF93C16F7F66DF606A898 /* Pods-NasaAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NasaAppTests/Pods-NasaAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF4CB105A4BFE91DDC1E771 /* Pods_NasaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				332F9B1F28ACF5000082F759 /* NasaPresenter.swift */,
+				3338746628AFB510009CB4D9 /* DetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				332F9B1628ACD0810082F759 /* Photo.swift in Sources */,
 				3338746328AE1326009CB4D9 /* RoverType.swift in Sources */,
 				332F9B2028ACF5000082F759 /* NasaPresenter.swift in Sources */,
+				3338746728AFB510009CB4D9 /* DetailPresenter.swift in Sources */,
 				332F9B2B28AD4DA40082F759 /* UIColor+Extension.swift in Sources */,
 				332F9B1828ACD08B0082F759 /* Camera.swift in Sources */,
 				332F9B1A28ACD0940082F759 /* Rover.swift in Sources */,

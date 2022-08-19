@@ -16,11 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var noPhotoView: UIView!
     
     let searchController = UISearchController(searchResultsController: nil)
-    private let presenter = NasaPresenter()
+    public var presenter = NasaPresenter()
     private var photos: [Photo] = []
     private var filteredPhotos: [Photo] = []
     private var isSearching: Bool = false
     private let indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballTrianglePath, color: .white, padding: 0)
+    private let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         configureUI()
         configureSearchController()
         setupNavBar()
@@ -60,6 +61,8 @@ class ViewController: UIViewController {
         
         // Segmented Control
         roverSegmentedControl.backgroundColor = .lightGray
+        roverSegmentedControl.selectedSegmentTintColor = .smokeWhite
+        roverSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.smokeBlack], for: .normal)
         
         // LoadingIndicator
         view.addSubview(indicator)
@@ -119,7 +122,7 @@ extension ViewController {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.default
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
@@ -159,7 +162,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.selectedPhoto = filteredPhotos[indexPath.row]
+        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        if isSearching == true {
+            detailVC.detailPresenter.selectedPhoto = filteredPhotos[indexPath.row]
+        } else {
+            detailVC.detailPresenter.selectedPhoto = photos[indexPath.row]
+        }
+        
+        detailVC.modalPresentationStyle = .overCurrentContext
+        detailVC.modalTransitionStyle = .crossDissolve
+        self.present(detailVC, animated: true)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
