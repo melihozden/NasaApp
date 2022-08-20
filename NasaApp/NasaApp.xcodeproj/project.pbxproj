@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331536EA28B10C1900E29225 /* ImageConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536E928B10C1900E29225 /* ImageConvertible.swift */; };
+		331536EC28B10D8F00E29225 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536EB28B10D8F00E29225 /* Bundle+Extension.swift */; };
+		331536EE28B10E4000E29225 /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536ED28B10E4000E29225 /* ImageSet.swift */; };
 		332F9AE028ABDDE70082F759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9ADF28ABDDE70082F759 /* AppDelegate.swift */; };
 		332F9AE228ABDDE70082F759 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9AE128ABDDE70082F759 /* SceneDelegate.swift */; };
 		332F9AE428ABDDE70082F759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9AE328ABDDE70082F759 /* ViewController.swift */; };
@@ -51,6 +54,9 @@
 
 /* Begin PBXFileReference section */
 		1B1A1192726EB982E0BAE0FB /* Pods-NasaApp-NasaAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApp-NasaAppUITests.release.xcconfig"; path = "Target Support Files/Pods-NasaApp-NasaAppUITests/Pods-NasaApp-NasaAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		331536E928B10C1900E29225 /* ImageConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConvertible.swift; sourceTree = "<group>"; };
+		331536EB28B10D8F00E29225 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		331536ED28B10E4000E29225 /* ImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
 		332F9ADC28ABDDE70082F759 /* NasaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332F9ADF28ABDDE70082F759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		332F9AE128ABDDE70082F759 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		331536E828B10BCC00E29225 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				331536E928B10C1900E29225 /* ImageConvertible.swift */,
+				331536ED28B10E4000E29225 /* ImageSet.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		332F9AD328ABDDE70082F759 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +158,7 @@
 				332F9B1028ACCECC0082F759 /* Model */,
 				332F9B0F28ACCD790082F759 /* Service */,
 				332F9B1428ACD03F0082F759 /* Utils+Extensions */,
+				331536E828B10BCC00E29225 /* Helper */,
 				332F9AE828ABDDE80082F759 /* Assets.xcassets */,
 				332F9AED28ABDDE80082F759 /* Info.plist */,
 			);
@@ -213,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				332F9B2A28AD4DA40082F759 /* UIColor+Extension.swift */,
+				331536EB28B10D8F00E29225 /* Bundle+Extension.swift */,
 			);
 			path = "Utils+Extensions";
 			sourceTree = "<group>";
@@ -496,9 +513,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3338746528AFA039009CB4D9 /* DetailViewController.swift in Sources */,
+				331536EE28B10E4000E29225 /* ImageSet.swift in Sources */,
 				332F9B2328ACFDE00082F759 /* PhotoResponse.swift in Sources */,
 				332F9B1628ACD0810082F759 /* Photo.swift in Sources */,
+				331536EC28B10D8F00E29225 /* Bundle+Extension.swift in Sources */,
 				3338746328AE1326009CB4D9 /* RoverType.swift in Sources */,
+				331536EA28B10C1900E29225 /* ImageConvertible.swift in Sources */,
 				332F9B2028ACF5000082F759 /* NasaPresenter.swift in Sources */,
 				3338746728AFB510009CB4D9 /* DetailPresenter.swift in Sources */,
 				332F9B2B28AD4DA40082F759 /* UIColor+Extension.swift in Sources */,

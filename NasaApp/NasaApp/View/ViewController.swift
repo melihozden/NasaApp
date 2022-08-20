@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
     @IBOutlet weak var noPhotoView: UIView!
+    @IBOutlet weak var noPhotoImageView: UIImageView!
     
     let searchController = UISearchController(searchResultsController: nil)
     public var presenter = NasaPresenter()
@@ -34,14 +35,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup
         configureUI()
         configureSearchController()
         setupNavBar()
         
         // Presenter
         presenter.setDelegate(delegate: self)
+        
         // Indicator
         indicator.startAnimating()
+        userInteraction(false)
+        
         // Service Call
         presenter.getPhotos(roverType: .curiosity)
     }
@@ -50,6 +55,7 @@ class ViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .smokeBlack
         noPhotoView.isHidden = true
+        noPhotoImageView.image = Icon.noDataFound.image
         
         // Design CollectionView cells
         let layout = UICollectionViewFlowLayout()
@@ -76,7 +82,7 @@ class ViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
         imageView.contentMode = .scaleAspectFit
         
-        let image = UIImage(named: "NasaWhiteLogo")
+        let image = Logo.logoWhite.image
         imageView.layer.cornerRadius = 5.0
         imageView.image = image
         

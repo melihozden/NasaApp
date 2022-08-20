@@ -18,6 +18,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var landingDateLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var photoTakenImageView: UIImageView!
+    @IBOutlet weak var launchImageView: UIImageView!
+    @IBOutlet weak var landingImageView: UIImageView!
     
     public var detailPresenter = DetailPresenter()
     
@@ -30,6 +34,12 @@ class DetailViewController: UIViewController {
     private func configureUI() {
         contentView.layer.cornerRadius = 5.0
         photoImageView.layer.cornerRadius = 5.0
+        
+        // ImageView
+        photoTakenImageView.image = Icon.camera.image
+        launchImageView.image = Icon.launch.image
+        landingImageView.image = Icon.landing.image
+        
         
         photoTakenDateLabel.text = detailPresenter.selectedPhoto?.earthDate
         photoImageView.kf.setImage(with: URL(string: detailPresenter.selectedPhoto?.imageSource ?? ""))
@@ -44,6 +54,9 @@ class DetailViewController: UIViewController {
     
     // MARK: - Action
     @IBAction func closeButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    @IBAction func dismissButton(_ sender: Any) {
         self.dismiss(animated: true)
     }
 }

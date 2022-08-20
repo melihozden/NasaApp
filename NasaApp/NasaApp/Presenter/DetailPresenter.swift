@@ -10,4 +10,8 @@ import Foundation
 class DetailPresenter {
     var selectedPhoto: Photo?
     
+    // MARK: - Service Calls
+    
+    // MARK: - Public Methods
+    
 }

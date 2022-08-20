@@ -86,7 +86,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wDW-dU-xyJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="NoDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="uhy-eb-fSU">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uhy-eb-fSU">
                                                         <rect key="frame" x="43" y="0.0" width="64" height="61"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="61" id="LIr-ln-H6U"/>
@@ -136,6 +136,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cn7-g0-dZD"/>
                     <connections>
+                        <outlet property="noPhotoImageView" destination="uhy-eb-fSU" id="QKF-Xb-LV1"/>
                         <outlet property="noPhotoView" destination="ASM-LD-3Gk" id="E3k-y0-xiO"/>
                         <outlet property="photosCollectionView" destination="pyt-BU-MxE" id="8OT-Qe-OKG"/>
                         <outlet property="roverSegmentedControl" destination="A72-jh-8t1" id="8hV-um-9Is"/>
@@ -153,6 +154,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWz-0z-tL5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="3Nt-j8-fTr" eventType="touchUpInside" id="pdi-IM-cIX"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jz5-1Q-XEO">
                                 <rect key="frame" x="43.5" y="238.5" width="327" height="419"/>
                                 <subviews>
@@ -220,7 +228,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v0V-51-0lO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="307" height="24"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-VU-3Sd">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-VU-3Sd">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="24" id="Mzt-p7-YLJ"/>
@@ -255,7 +263,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ded-gp-co6">
                                                                         <rect key="frame" x="0.0" y="0.0" width="151" height="50"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-gv-NJt">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-gv-NJt">
                                                                                 <rect key="frame" x="10" y="13" width="24" height="24"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="24" id="Gta-xB-3Hy"/>
@@ -283,7 +291,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0u5-Ne-jXC">
                                                                         <rect key="frame" x="156" y="0.0" width="151" height="50"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-qh-1QV">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-qh-1QV">
                                                                                 <rect key="frame" x="10" y="13" width="24" height="24"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="24" id="1YF-Yb-fbm"/>
@@ -336,18 +344,26 @@
                         <viewLayoutGuide key="safeArea" id="QR3-Pg-NNZ"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lWz-0z-tL5" firstAttribute="leading" secondItem="QR3-Pg-NNZ" secondAttribute="leading" id="aSQ-a0-Uk3"/>
                             <constraint firstItem="jz5-1Q-XEO" firstAttribute="centerY" secondItem="zDx-i0-VLd" secondAttribute="centerY" id="gY6-az-9e3"/>
                             <constraint firstItem="jz5-1Q-XEO" firstAttribute="centerX" secondItem="zDx-i0-VLd" secondAttribute="centerX" id="kEr-IZ-Rqp"/>
+                            <constraint firstItem="QR3-Pg-NNZ" firstAttribute="trailing" secondItem="lWz-0z-tL5" secondAttribute="trailing" id="kYO-H9-sQq"/>
+                            <constraint firstItem="QR3-Pg-NNZ" firstAttribute="bottom" secondItem="lWz-0z-tL5" secondAttribute="bottom" id="lID-Bn-v8n"/>
+                            <constraint firstItem="lWz-0z-tL5" firstAttribute="top" secondItem="QR3-Pg-NNZ" secondAttribute="top" id="lxC-Oz-Wgq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraNameLabel" destination="CAY-Ga-Ky6" id="H0R-ot-mCe"/>
                         <outlet property="closeButton" destination="dpH-ll-R2T" id="Tft-YL-Puc"/>
                         <outlet property="contentView" destination="jz5-1Q-XEO" id="GdU-wE-RH8"/>
+                        <outlet property="dismissButton" destination="lWz-0z-tL5" id="MCt-cy-71Q"/>
                         <outlet property="landingDateLabel" destination="ovX-cB-LQh" id="8nc-jp-2Ds"/>
+                        <outlet property="landingImageView" destination="LVV-qh-1QV" id="RIg-Uc-vcj"/>
                         <outlet property="launchDateLabel" destination="Mzo-52-KN4" id="oXR-Dx-KV3"/>
+                        <outlet property="launchImageView" destination="Mys-gv-NJt" id="qDz-Hs-isk"/>
                         <outlet property="photoImageView" destination="SwH-TT-EhD" id="I61-Bt-7cw"/>
                         <outlet property="photoTakenDateLabel" destination="rna-VJ-HOo" id="7DI-7p-KxH"/>
+                        <outlet property="photoTakenImageView" destination="HtO-VU-3Sd" id="0uV-rw-2vO"/>
                         <outlet property="roverNameLabel" destination="wPV-gN-xLu" id="AjN-IP-5qg"/>
                         <outlet property="statusLabel" destination="CLo-Ov-xP9" id="DGf-FU-TP1"/>
                     </connections>
@@ -376,13 +392,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NoDataFound" width="64" height="64"/>
-        <image name="camera" width="24" height="24"/>
         <image name="close" width="16" height="16"/>
-        <image name="landing" width="12" height="12"/>
-        <image name="launch" width="12" height="12"/>
         <namedColor name="SmokeWhite">
-            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
