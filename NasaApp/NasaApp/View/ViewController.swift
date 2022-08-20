@@ -91,6 +91,7 @@ class ViewController: UIViewController {
 // MARK: - Action
     @IBAction func roverChanged(_ sender: Any) {
         searchController.searchBar.text = ""
+        presenter.page = 1 // refresh the page count when tabbed changed.
         if let roverType = RoverType(rawValue: roverSegmentedControl.selectedSegmentIndex) {
             photos.removeAll()
             indicator.startAnimating()
@@ -170,9 +171,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             detailVC.detailPresenter.selectedPhoto = photos[indexPath.row]
         }
         
-        detailVC.modalPresentationStyle = .overCurrentContext
-        detailVC.modalTransitionStyle = .crossDissolve
-        self.present(detailVC, animated: true)
+        if searchController.isActive {
+            self.searchController.dismiss(animated: false) {
+                detailVC.modalPresentationStyle = .overCurrentContext
+                detailVC.modalTransitionStyle = .crossDissolve
+                self.present(detailVC, animated: true)
+            }
+        } else {
+            detailVC.modalPresentationStyle = .overCurrentContext
+            detailVC.modalTransitionStyle = .crossDissolve
+            self.present(detailVC, animated: true)
+        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
