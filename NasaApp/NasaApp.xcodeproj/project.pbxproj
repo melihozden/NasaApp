@@ -10,6 +10,7 @@
 		331536EA28B10C1900E29225 /* ImageConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536E928B10C1900E29225 /* ImageConvertible.swift */; };
 		331536EC28B10D8F00E29225 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536EB28B10D8F00E29225 /* Bundle+Extension.swift */; };
 		331536EE28B10E4000E29225 /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536ED28B10E4000E29225 /* ImageSet.swift */; };
+		331536F028B117E200E29225 /* NasaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331536EF28B117E200E29225 /* NasaApi.swift */; };
 		332F9AE028ABDDE70082F759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9ADF28ABDDE70082F759 /* AppDelegate.swift */; };
 		332F9AE228ABDDE70082F759 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9AE128ABDDE70082F759 /* SceneDelegate.swift */; };
 		332F9AE428ABDDE70082F759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F9AE328ABDDE70082F759 /* ViewController.swift */; };
@@ -57,6 +58,7 @@
 		331536E928B10C1900E29225 /* ImageConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConvertible.swift; sourceTree = "<group>"; };
 		331536EB28B10D8F00E29225 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		331536ED28B10E4000E29225 /* ImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
+		331536EF28B117E200E29225 /* NasaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaApi.swift; sourceTree = "<group>"; };
 		332F9ADC28ABDDE70082F759 /* NasaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332F9ADF28ABDDE70082F759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		332F9AE128ABDDE70082F759 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		332F9B0F28ACCD790082F759 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				331536EF28B117E200E29225 /* NasaApi.swift */,
 				332F9B1B28ACD2490082F759 /* NasaService.swift */,
 			);
 			path = Service;
@@ -529,6 +532,7 @@
 				332F9AE028ABDDE70082F759 /* AppDelegate.swift in Sources */,
 				332F9B1C28ACD2490082F759 /* NasaService.swift in Sources */,
 				332F9AE228ABDDE70082F759 /* SceneDelegate.swift in Sources */,
+				331536F028B117E200E29225 /* NasaApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
